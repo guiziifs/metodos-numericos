@@ -2,11 +2,11 @@
 #include <math.h>
 
 double func (double x) {
-    return x*x*x - x - 2;
+    return x*x - 2;
 }
 
 double dfunc (double x) {
-    return 3*x*x - 1;
+    return 2*x;
 }
 
 double newton_raphson (double (*f)(double), double (*df)(double), double x0, double epslon, int *iteracao) {
@@ -38,7 +38,7 @@ int main() {
 
     printf("Digite o chute inicial (x0): ");
     scanf("%lf", &x0);
-    printf("Digite o critério de parada (epsilon): ");
+    printf("Digite o criterio de parada (epsilon): ");
     scanf("%lf", &epsilon);
 
     int iter = 0;

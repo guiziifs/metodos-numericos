@@ -1,14 +1,23 @@
 #include <stdio.h>
 #include <math.h>
+#include <stdbool.h>
 
 // aleterar a funcao correspondente
 double func(double x) {
-    return x*x*x - x - 2;
+    return x*x - 2;
+}
+
+bool bolzano (double fa, double fb) {
+    if (fa * fb >= 0) {
+        return true; // nao satisfaz bolzano
+    } else {
+        return false; // satisfaz bolzano
+    }
 }
 
 double bissec(double (*f)(double), double a, double b, double epslon, int *iteracao) {
     // certifica que o teorema de bolzano se cumpre
-    if (f(a) * f(b) >= 0 ) {
+    if (bolzano(f(a), f(b))) {
         printf("Intervalo não satisfaz teorema de bolzano");
         return NAN;
     }
@@ -42,7 +51,7 @@ int main() {
     scanf("%lf", &a);
     printf("Digite o fim do intervalo: ");
     scanf("%lf", &b);
-    printf("Digite o cirtério de parada: ");
+    printf("Digite o cirterio de parada: ");
     scanf("%lf", &epslon);
 
     int i = 0;

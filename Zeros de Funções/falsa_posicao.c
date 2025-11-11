@@ -1,14 +1,23 @@
 #include <stdio.h>
 #include <math.h>
+#include <stdbool.h>
 
 // aleterar a funcao correspondente
 double func(double x) {
-    return x*x*x - x - 2;
+    return x*x - 2;
+}
+
+bool bolzano (double fa, double fb) {
+    if (fa * fb >= 0) {
+        return true; // nao satisfaz bolzano
+    } else {
+        return false; // satisfaz bolzano
+    }
 }
 
 double falsa_posic(double (*f)(double), double a, double b, double epslon, int *iteracao) {
     // certifica que o teorema de bolzano se cumpre
-    if (f(a) * f(b) >= 0 ) {
+    if (bolzano(f(a), f(b))) {
         printf("Intervalo não satisfaz teorema de bolzano");
         return NAN;
     }
@@ -19,7 +28,6 @@ double falsa_posic(double (*f)(double), double a, double b, double epslon, int *
     *iteracao = 0;
 
     do {
-
         xm = ((a*fb) - (b*fa)) / (fb - fa);
         fxm = f(xm);
         (*iteracao)++;
@@ -28,6 +36,7 @@ double falsa_posic(double (*f)(double), double a, double b, double epslon, int *
             return xm;
         }
 
+        // atualiza intervalo
         if (fa * fxm < 0) {
             b = xm;
             fb = fxm;

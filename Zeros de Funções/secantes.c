@@ -36,7 +36,7 @@ double secantes(double (*f)(double), double x0, double x1, double epslon, int *i
 
 int main() {
     double x0, x1, epslon;
-    int iteracoes;
+    int iteracoes = 0;
 
     printf("Digite o primeiro chute inicial (x0): ");
     scanf("%lf", &x0);
@@ -44,14 +44,14 @@ int main() {
     printf("Digite o segundo chute inicial (x1): ");
     scanf("%lf", &x1);
 
-    printf("Digite o critério de parada (epslon): ");
+    printf("Digite o criterio de parada (epslon): ");
     scanf("%lf", &epslon);
 
     double raiz = secantes(func, x0, x1, epslon, &iteracoes, 100);
 
     if (!isnan(raiz)) {
         printf("\nRaiz aproximada: %.4f\n", raiz);
-        printf("Numero de iteraoees: %d\n", iteracoes);
+        printf("Numero de iteraoes: %d\n", iteracoes);
     }
 
     return 0;
