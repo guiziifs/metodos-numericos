@@ -102,6 +102,8 @@ void ajuste_polinomial(double *c, double *x, double *y, int n, int m) {
     free(b);
 }
 
+// ajuste da tabela para casos nao lineares
+
 int main() {
     int n, m;
     printf("Digite o numero de pontos: ");
